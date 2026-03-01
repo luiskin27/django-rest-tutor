@@ -6,7 +6,7 @@ from snippets.serializers import SnippetSerializer
 from rest_framework import permissions
 
 @api_view(['GET', 'POST'])
-@permission_classes([permissions.AllowAny])
+# @permission_classes([permissions.AllowAny])
 def snippet_list(request, format=None):
     """
     List all code snippets, or create a new snippet.
