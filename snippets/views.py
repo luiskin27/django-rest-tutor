@@ -3,10 +3,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer
-from rest_framework import permissions
+
 
 @api_view(['GET', 'POST'])
-# @permission_classes([permissions.AllowAny])
 def snippet_list(request, format=None):
     """
     List all code snippets, or create a new snippet.
@@ -22,6 +21,7 @@ def snippet_list(request, format=None):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def snippet_detail(request, pk, format=None):
